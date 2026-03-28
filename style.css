@@ -1,0 +1,41 @@
+
+:root {
+  --bg-color: #e6e6e6;
+  --text-color: #1a1a1a;
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}
+body {
+  margin: 0;
+}
+h2 {
+  font-size: 1.25rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid var(--text-color);
+  margin: 0;
+}
+.card {
+  padding: 1rem;
+}
+.link-button {
+  display: inline-block;
+  padding: 0.5rem;
+  color: var(--text-color);
+  background-color: hsl(120, 100%, 40%);
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-out;
+}
+.link-button:hover {
+  background-color: hsl(120, 100%, 45%);
+}
+.link-button:active {
+  background-color: hsl(120, 100%, 35%);
+}
+.info {
+  padding-left: 1.25rem;
+  list-style-type: none;
+}
