@@ -10,12 +10,35 @@
 }
 body {
   margin: 0;
+  background-color: var(--bg-color);
 }
 h2 {
   font-size: 1.25rem;
   padding: 0.5rem 0;
   border-bottom: 2px solid var(--text-color);
   margin: 0;
+}
+details {
+  margin: 1rem 0;
+  background-color: #e6e6e6;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+details::details-content {
+  padding: 0 1rem;
+}
+summary {
+  background-color: #ccc;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease-out;
+}
+summary:hover {
+  background-color: #d9d9d9;
+}
+summary:active {
+  background-color: #c0c0c0;
 }
 .card {
   padding: 1rem;
@@ -38,4 +61,12 @@ h2 {
 .info {
   padding-left: 1.25rem;
   list-style-type: none;
+}
+.mc-pack-icon {
+  image-rendering: pixelated;
+  margin-top: 1rem;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 0.5rem;
+  border: 2px solid #7f7f7f;
 }
