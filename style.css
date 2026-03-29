@@ -18,6 +18,12 @@ h1.mc-pack-title {
   border-bottom: 2px solid var(--text-color);
   margin: 0;
 }
+h2 {
+  font-size: 1.25rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid var(--text-color);
+  margin: 0;
+}
 details {
   margin: 1rem 0;
   background-color: #e6e6e6;
