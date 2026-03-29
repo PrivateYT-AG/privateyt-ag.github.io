@@ -12,7 +12,7 @@ body {
   margin: 0;
   background-color: var(--bg-color);
 }
-h2 {
+h1.mc-pack-title {
   font-size: 1.25rem;
   padding: 0.5rem 0;
   border-bottom: 2px solid var(--text-color);
