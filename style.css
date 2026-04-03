@@ -1,9 +1,14 @@
 *, *::after, *::before {
   box-sizing: border-box;
 }
-:root, button {
+:root {
   --bg-color: #e6e6e6;
   --text-color: #1a1a1a;
+  --hover-color: #d9d9d9;
+  --bg-color-2: #ccc;
+  --active-color: #c0c0c0;
+  --link-color: #00e;
+  --fake-btn-color: #999;
   line-height: 1.5;
   font-family: Inter, sans-serif;
   font-feature-settings: 'liga' 1, 'calt' 1, 'ss01' 1, 'ss04' 1; /* fix for Chrome */
@@ -11,9 +16,26 @@
 @supports (font-variation-settings: normal) {
   :root { font-family: InterVariable, sans-serif; }
 }
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #e6e6e6;
+  --hover-color: #404040;
+  --bg-color-2: #333;
+  --active-color: #262626;
+  --link-color: #88a3e8;
+  --fake-btn-color: #666;
+}
 body {
   margin: 0;
+  color: var(--text-color);
   background-color: var(--bg-color);
+}
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color-2);
+  padding: 0 1rem;
+  box-shadow: 0 0 8px #0006;
 }
 main {
   padding: 1rem;
@@ -35,23 +57,24 @@ h2 {
 }
 a {
   text-decoration: none;
+  color: var(--link-color);
 }
 a:visited {
-  color: #00e;
+  color: var(--link-color);
 }
 a:hover {
   text-decoration: underline;
 }
 a:active {
-  color: #e00;
+  filter: brightness(1.25);
 }
 .all-caps {
   text-transform: uppercase;
 }
 details {
   margin: 1rem 0;
-  background-color: #e6e6e6;
-  border: 2px solid #ccc;
+  background-color: var(--bg-color);
+  border: 2px solid var(--bg-color-2);
   border-radius: 0.5rem;
   overflow: hidden;
   height: 2.5rem;
@@ -72,7 +95,7 @@ details:last-child {
   margin-bottom: 0;
 }
 summary {
-  background-color: #ccc;
+  background-color: var(--bg-color-2);
   cursor: pointer;
   list-style: none;
   padding: 0.5rem;
@@ -85,10 +108,53 @@ summary::before {
   transition: transform 0.2s ease;
 }
 summary:hover {
-  background-color: #d9d9d9;
+  background-color: var(--hover-color);
 }
 summary:active {
-  background-color: #c0c0c0;
+  background-color: var(--active-color);
+}
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-btn::after {
+  content: '▼';
+  display: inline-block;
+  margin-left: 8px;
+}
+.dropdown-btn {
+  background-color: unset;
+}
+.dropdown-menu {
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-radius: 0.5rem;
+  background-color: var(--bg-color);
+  border: 2px solid var(--bg-color-2);
+  list-style: none;
+  padding: 0;
+  min-width: 8rem;
+  max-height: 16rem;
+  box-shadow: 0 0 8px #0003;
+  z-index: 1;
+  transform: translateY(-10%);
+  opacity: 0;
+  overflow: auto;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.dropdown-container .dropdown-menu.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dropdown-menu button {
+  text-align: left;
+  background-color: transparent;
+  width: 100%;
 }
 .tooltip {
   position: relative;
@@ -101,7 +167,7 @@ summary:active {
   visibility: hidden;
   background-color: var(--bg-color);
   color: var(--text-color);
-  border: 2px solid #ccc;
+  border: 2px solid var(--bg-color-2);
   text-align: center;
   padding: 0.25rem;
   border-radius: 6px;
@@ -117,21 +183,21 @@ summary:active {
   opacity: 1;
 }
 button {
-  font-size: inherit;
+  font: inherit;
   line-height: inherit;
   padding: 0.5rem;
   color: var(--text-color);
-  background-color: #ccc;
+  background-color: var(--bg-color-2);
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.2s ease-out, transform 0.15s ease;
 }
 button:not(:disabled):hover {
-  background-color: #d9d9d9;
+  background-color: var(--hover-color);
 }
 button:not(:disabled):active {
-  background-color: #c0c0c0;
+  background-color: var(--active-color);
   transform: scale(0.9);
 }
 button:disabled {
@@ -140,6 +206,7 @@ button:disabled {
 .close-x {
   user-select: none;
   position: absolute;
+  color: var(--text-color);
   top: 0;
   right: 0;
   font-size: 1rem;
@@ -147,6 +214,7 @@ button:disabled {
   width: 2.5rem;
   height: 2.5rem;
   line-height: 1;
+  background-color: transparent;
 }
 .close-x:hover {
   background-color: #cc0000 !important;
@@ -174,12 +242,13 @@ button:disabled {
   height: 2.5rem;
   padding: 0.5rem;
   line-height: 1;
-  color: #999;
+  color: var(--fake-btn-color);
 }
 dialog {
   overflow: hidden;
+  color: var(--text-color);
   background-color: var(--bg-color);
-  border: 2px solid #ccc;
+  border: 2px solid var(--bg-color-2);
   padding: 0;
   width: 48rem;
   border-radius: 0.5rem;
@@ -208,7 +277,7 @@ dialog.closing {
 }
 .dialog-header {
   position: sticky;
-  background-color: #ccc;
+  background-color: var(--bg-color-2);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -240,29 +309,32 @@ dialog.closing {
   display: inline-block;
   padding: 0.5rem;
   color: var(--text-color);
-  background-color: #ccc;
+  background-color: var(--bg-color-2);
   text-decoration: none;
   border-radius: 0.25rem;
   transition: background-color 0.2s ease-out, transform 0.15s ease;
 }
 .link-button:hover {
-  background-color: #d9d9d9;
+  background-color: var(--hover-color);
   color: var(--text-color);
   text-decoration: none;
 }
 .link-button:active {
-  background-color: #c0c0c0;
+  background-color: var(--active-color);
   color: var(--text-color);
   transform: scale(0.9);
 }
 .download-button {
   background-color: hsl(120, 100%, 40%);
+  color: #1a1a1a;
 }
 .download-button:hover {
   background-color: hsl(120, 100%, 45%);
+  color: #1a1a1a;
 }
 .download-button:active {
   background-color: hsl(120, 100%, 35%);
+  color: #1a1a1a;
 }
 .disabled {
   cursor: not-allowed;
