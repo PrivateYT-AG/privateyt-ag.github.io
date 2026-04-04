@@ -34,7 +34,7 @@ header {
   position: sticky;
   top: 0;
   background-color: var(--bg-color-2);
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   box-shadow: 0 0 8px #0006;
 }
 main {
@@ -152,6 +152,9 @@ summary:active {
   pointer-events: auto;
 }
 .dropdown-menu button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   text-align: left;
   background-color: transparent;
   width: 100%;
