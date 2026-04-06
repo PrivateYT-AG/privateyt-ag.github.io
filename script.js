@@ -1,3 +1,17 @@
+async function fetchData(path) {
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
+      throw new Error(`HTTP Error! Status: ${response.status}`)
+    }
+    const data = await response.json();
+    return data;
+  } catch {
+    console.error('Cannot fetch json file: ', error);
+    throw error;
+  }
+}
+
 const dialog = document.querySelectorAll('dialog');
 const showModal = document.querySelectorAll('.showModal');
 const closeModal = document.querySelectorAll('.closeModal');
@@ -23,6 +37,7 @@ closeModal.forEach(btn => {
   })
 })
 
+// Todo: Accessibility (none here for now)
 const buttons = document.querySelectorAll('.dropdown-btn');
 
 buttons.forEach(btn => {
@@ -99,3 +114,11 @@ function updateActive() {
 const savedTheme = localStorage.getItem('theme') || 'system';
 applyTheme(savedTheme);
 updateActive();
+
+// Splash text thingy
+const splashTextSpan = document.getElementById('splash-text');
+async function loadSplash() {
+  const splashTexts = await fetchData('/json/splash-texts.json');
+  splashTextSpan.textContent = splashTexts[Math.floor(Math.random() * splashTexts.length)];
+}
+loadSplash();
