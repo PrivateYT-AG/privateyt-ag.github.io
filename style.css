@@ -149,6 +149,9 @@ summary:active {
   background-color: unset;
   border: 2px solid var(--bg-color-2);
 }
+.dropdown-btn:active {
+  transform: none !important;
+}
 .dropdown-menu {
   margin: 0;
   position: absolute;
@@ -182,6 +185,9 @@ summary:active {
   text-align: left;
   background-color: transparent;
   width: 100%;
+}
+.dropdown-menu button:active {
+  transform: none !important;
 }
 .tooltip {
   position: relative;
@@ -245,9 +251,11 @@ button:disabled {
 }
 .close-x:hover {
   background-color: #cc0000 !important;
+  color: var(--bg-color);
 }
 .close-x:active {
-  background-color: #aa0000 !important;
+  background-color: #990000 !important;
+  transform: none !important;
 }
 .close-x:focus-visible {
   background-color: #cc0000 !important;
@@ -353,15 +361,15 @@ dialog.closing {
   transform: scale(0.9);
 }
 .download-button {
-  background-color: hsl(120, 100%, 40%);
+  background-color: #00cc00;
   color: #1a1a1a;
 }
 .download-button:hover {
-  background-color: hsl(120, 100%, 45%);
+  background-color: #00e600;
   color: #1a1a1a;
 }
 .download-button:active {
-  background-color: hsl(120, 100%, 35%);
+  background-color: #00b300;
   color: #1a1a1a;
 }
 .disabled {
