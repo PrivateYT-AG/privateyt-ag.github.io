@@ -1,0 +1,34 @@
+:root, input, button {
+  font-family: Inter, system-ui, sans-serif;
+  font-feature-settings:
+    'calt' 1, /* contextual alternatives */
+    'tnum' 1, /* tabular numbers */
+    'ss01' 1, /* flat-top 3, open 4, 6, and 9 */
+    'ss04' 1 /* capital I with serifs, lowercase l with tail */
+}
+@supports (font-variation-settings: normal) {
+  :root, input, button { font-family: InterVariable, system-ui, sans-serif; font-optical-sizing: auto; }
+}
+
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("InterVariable.woff2") format("woff2");
+}
+/* static fonts */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("Inter-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("Inter-Bold.woff2") format("woff2"); }
+
+@font-feature-values InterVariable {
+  @character-variant {
+    alt-3: 9; /* Flat-top three */
+    open-4: 2; /* Open four */
+    open-6: 3; /* Open six */
+    open-9: 4; /* Open nine */
+    lc-l-with-tail:   5; /* Lower-case L with tail */
+    uc-i-with-serif:  8; /* Upper-case i with serif */
+  }
+  @styleset { ss01: 1; ss04: 4; }
+}
