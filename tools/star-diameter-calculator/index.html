@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="calculator.css">
+  <link rel="stylesheet" href="/fonts/inter.css">
+  <title>Star Diameter Calculator</title>
+</head>
+<body>
+  <header>
+    <div class="left-side">
+      <h1 class="page-title">Star Diameter Calculator</h1>
+      <a href="/" class="link-button hide-on-mobile">Back to main page</a>
+    </div>
+    <div class="right-side">
+      <button type="button" class="showModal hide-on-mobile" data-dialog="settings" disabled>Settings</button>
+      <div class="dropdown-container">
+        <button type="button" class="dropdown-btn">Theme</button>
+        <ul class="dropdown-menu">
+          <li><button type="button" id="light-mode-btn">Light</button></li>
+          <li><button type="button" id="dark-mode-btn">Dark</button></li>
+          <li><button type="button" id="system-theme-btn">System</button></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="calculator-container">
+      <div class="calculator-single-input">
+        <p class="margin-small">Simple calculator to calculate a star's diameter.</p>
+        <input type="text" placeholder="Enter star radius (in solar radii)" id="star-input" inputmode="numeric" maxlength="15" pattern="[0-9]+([,\.][0-9]+)?" autocomplete="off">
+        <div class="calculator-button-container">
+          <button type="button" id="calculate" class="calculator-button">Calculate diameter</button>
+          <button type="button" id="clear" class="calculator-button">Clear result</button>
+        </div>
+        <span class="result-error" id="result"></span>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <span>Developed by PrivateYT-AG. Licensed under the <span class="showModal linklike" data-dialog="license">MIT license</span>.</span>
+  </footer>
+  <dialog id="settings">
+    <div class="dialog-header">
+      <h2>Settings</h2>
+      <button type="button" class="close-x closeModal" aria-label="Close">✕</button>
+    </div>
+    <div class="dialog-content">
+      <label class="switch-container">
+        <span class="label-text">A Toggle</span>
+        <label class="switch-btn">
+          <input type="checkbox" id="switchBtn">
+          <span class="slider"></span>
+        </label>
+      </label>
+      <div class="dropdown-container">
+        <button type="button" class="dropdown-btn">Units</button>
+        <ul class="dropdown-menu">
+          <li><button type="button">Kilometers</button></li>
+          <li><button type="button">Miles</button></li>
+        </ul>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="license">
+    <div class="dialog-header">
+      <h2>License</h2>
+      <button type="button" class="close-x closeModal" aria-label="Close">✕</button>
+    </div>
+    <div class="dialog-content">
+      <p>Copyright (c) 2025-2026 PrivateYT-AG</p>
+      <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+      <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+      <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+    </div>
+  </dialog>
+  <script src="/script.js"></script>
+  <script src="calculator.js"></script>
+</body>
+</html>
