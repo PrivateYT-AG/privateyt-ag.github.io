@@ -72,11 +72,13 @@ header {
 }
 header > .left-side {
   display: flex;
+  align-items: center;
   margin-right: auto;
   gap: 0.5rem;
 }
 header > .right-side {
   display: flex;
+  align-items: center;
   margin-left: auto;
   gap: 1rem;
 }
