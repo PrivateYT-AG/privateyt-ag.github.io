@@ -63,16 +63,23 @@ document.addEventListener('keydown', (e) => {
 
 const lightBtn = document.getElementById('light-mode-btn');
 const darkBtn = document.getElementById('dark-mode-btn');
+const oledDarkBtn = document.getElementById('oled-dark-btn');
 const systemBtn = document.getElementById('system-theme-btn');
 
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 function applyTheme(theme) {
   document.body.classList.remove('dark-mode');
+  document.body.classList.remove('oled-dark');
 
   if (theme ==='dark') {
     document.body.classList.add('dark-mode');
-  } else if (theme === 'system') {
+    document.body.classList.remove('oled-dark');
+  } else if (theme === 'oled-dark') {
+    document.body.classList.add('oled-dark');
+    document.body.classList.remove('dark-mode');
+  }
+  else if (theme === 'system') {
     if (mediaQuery.matches) {
       document.body.classList.add('dark-mode')
     }
@@ -88,6 +95,12 @@ lightBtn.addEventListener('click', () => {
 darkBtn.addEventListener('click', () => {
   localStorage.setItem('theme', 'dark');
   applyTheme('dark');
+  updateActive();
+});
+
+oledDarkBtn.addEventListener('click', () => {
+  localStorage.setItem('theme', 'oled-dark');
+  applyTheme('oled-dark');
   updateActive();
 });
 
@@ -108,6 +121,7 @@ function updateActive() {
 
   lightBtn.classList.toggle('active', theme === 'light');
   darkBtn.classList.toggle('active', theme === 'dark');
+  oledDarkBtn.classList.toggle('active', theme === 'oled-dark');
   systemBtn.classList.toggle('active', theme === 'system');
 }
 
