@@ -6,21 +6,27 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="calculator.css">
   <link rel="stylesheet" href="/fonts/inter.css">
+  <script src="https://kit.fontawesome.com/b2bfce1cfe.js" crossorigin="anonymous"></script>
   <title>Star Diameter Calculator</title>
 </head>
 <body>
   <header>
     <div class="left-side">
+      <a href="/" class="link-button back-btn">
+        <i class="icon-btn fa-solid fa-arrow-left"></i>
+      </a>
       <h1 class="page-title">Star Diameter Calculator</h1>
-      <a href="/" class="link-button hide-on-mobile">Back to main page</a>
     </div>
     <div class="right-side">
-      <button type="button" class="showModal hide-on-mobile" data-dialog="settings" disabled>Settings</button>
-      <div class="dropdown-container">
+      <button type="button" class="showModal" data-dialog="settings" disabled>
+        <i class="icon-btn fa-solid fa-gear"></i>
+      </button>
+      <div class="dropdown-container hide-on-mobile">
         <button type="button" class="dropdown-btn">Theme</button>
         <ul class="dropdown-menu">
           <li><button type="button" id="light-mode-btn">Light</button></li>
           <li><button type="button" id="dark-mode-btn">Dark</button></li>
+          <li><button type="button" id="oled-dark-btn">OLED Dark</button></li>
           <li><button type="button" id="system-theme-btn">System</button></li>
         </ul>
       </div>
@@ -44,28 +50,37 @@
   </footer>
   <dialog id="settings">
     <div class="dialog-header">
+      <i class="dialog-icon fa-solid fa-gear"></i>
       <h2>Settings</h2>
       <button type="button" class="close-x closeModal" aria-label="Close">✕</button>
     </div>
     <div class="dialog-content">
-      <label class="switch-container">
-        <span class="label-text">A Toggle</span>
+      <label class="switch-container disabled">
+        <span class="label-text">Use decimals</span>
         <label class="switch-btn">
-          <input type="checkbox" id="switchBtn">
+          <input type="checkbox" id="useDecimals">
           <span class="slider"></span>
         </label>
       </label>
-      <div class="dropdown-container">
-        <button type="button" class="dropdown-btn">Units</button>
-        <ul class="dropdown-menu">
-          <li><button type="button">Kilometers</button></li>
-          <li><button type="button">Miles</button></li>
-        </ul>
-      </div>
+      <label class="switch-container disabled">
+        <span class="label-text">Include imperial units</span>
+        <label class="switch-btn">
+          <input type="checkbox" id="includeImperial">
+          <span class="slider"></span>
+        </label>
+      </label>
+      <label class="switch-container disabled">
+        <span class="label-text">Update result automatically</span>
+        <label class="switch-btn">
+          <input type="checkbox" id="autoUpdateResult">
+          <span class="slider"></span>
+        </label>
+      </label>
     </div>
   </dialog>
   <dialog id="license">
     <div class="dialog-header">
+      <i class="dialog-icon fa-solid fa-key"></i>
       <h2>License</h2>
       <button type="button" class="close-x closeModal" aria-label="Close">✕</button>
     </div>
