@@ -1,7 +1,7 @@
 :root {
   --error-color: #a00;
 }
-.dark-mode {
+.dark-mode, .oled-dark {
   --error-color: #f55;
 }
 main {
@@ -13,7 +13,7 @@ main {
   padding: 0;
   border: none;
 }
-input {
+#star-input {
   width: 100%;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
@@ -24,7 +24,7 @@ input {
   width: 32rem;
   border: var(--borders);
   background-color: var(--bg-color-secondary);
-  box-shadow: var(--shadows-1);
+  box-shadow: 0 4px 8px #0003;
 }
 .result-error {
   display: block;
@@ -67,12 +67,10 @@ input {
   display: block;
   margin-top: 0.5rem;
 }
-@media (max-width: 767px) {
+@media (max-width: 600px) {
   .hide-on-mobile {
     display: none;
   }
-}
-@media (max-width: 600px) {
   .page-title {
     font-size: 1rem;
   }
@@ -82,15 +80,18 @@ input {
   .calculator-single-input {
     width: 100%;
   }
-  .error {
-    text-align: center;
-  }
-}
-@media (max-width: 425px) {
   .calculator-button-container {
     display: block;
   }
   #calculate {
     margin-bottom: 1rem;
+  }
+  .result-error {
+    text-align: center;
+  }
+}
+@media (max-width: 360px) {
+  .page-title {
+    font-size: 0.8125rem;
   }
 }
