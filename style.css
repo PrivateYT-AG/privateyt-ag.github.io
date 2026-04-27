@@ -38,6 +38,18 @@
   --link-color: #88a3e8;
   --borders: 2px solid var(--border-color);
 }
+.oled-dark {
+  --accent-color: #3333cc;
+  --bg-color-primary: #000000;
+  --bg-color-secondary: #111111;
+  --bg-color-teritary: #262626;
+  --border-color: #333333;
+  --text-color: #ffffff;
+  --hover-color: #333333;
+  --active-color: #262626;
+  --link-color: #88a3e8;
+  --borders: 2px solid var(--border-color);
+}
 body {
   margin: 0;
   color: var(--text-color);
@@ -70,11 +82,13 @@ header > .right-side {
 }
 header button {
   background-color: unset;
-  border: var(--borders);
   padding: 0.25rem 0.5rem;
 }
 header button:active {
   transform: none !important;
+}
+header .link-button {
+  padding: 0.25rem 0.5rem;
 }
 .right-side .dropdown-menu {
   left: unset;
@@ -169,6 +183,7 @@ summary {
   padding: 0.5rem;
   transition: background-color 0.2s ease-out;
   border-bottom: var(--borders);
+  background-color: var(--bg-color-secondary);
 }
 summary::before {
   content: '▶';
@@ -266,7 +281,7 @@ button {
   padding: 0.5rem;
   color: var(--text-color);
   background-color: var(--bg-color-teritary);
-  border: none;
+  border: var(--borders);
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease-out, transform 0.15s ease;
@@ -277,6 +292,9 @@ button:not(:disabled):hover {
 button:not(:disabled):active {
   background-color: var(--active-color);
   transition: none;
+}
+.icon-btn {
+  width: 1rem;
 }
 input {
   font: inherit;
@@ -291,8 +309,15 @@ input {
 search form {
   display: flex;
 }
+input[type=search] {
+  width: 100%;
+}
+button#search {
+  margin-left: 1rem;
+}
 .close-x {
   user-select: none;
+  border: none;
   position: absolute;
   color: var(--text-color);
   border-radius: 0;
@@ -334,7 +359,7 @@ dialog::backdrop {
   transition: display 0.2s allow-discrete, overlay 0.2s allow-discrete, background-color 0.2s ease;
 }
 dialog[open]::backdrop {
-  background-color: #00000054;
+  background-color: #00000066;
 }
 @starting-style {
   dialog[open]::backdrop {
@@ -365,7 +390,6 @@ dialog.closing {
 }
 .dialog-content {
   padding: 1rem;
-  min-height: 12rem;
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -375,13 +399,16 @@ dialog.closing {
 .dialog-footer {
   padding: 1rem;
 }
+.dialog-icon {
+  margin-right: 1rem;
+}
 .card {
   padding: 1rem;
 }
 .link-button {
   font-size: 0.875rem;
   display: inline-block;
-  padding: 0.25rem;
+  padding: 0.5rem;
   color: var(--text-color) !important;
   border: var(--borders);
   text-decoration: none;
@@ -397,6 +424,9 @@ dialog.closing {
   background-color: var(--active-color);
   color: var(--text-color);
   transition: none;
+}
+.link-button.back-btn {
+  border: none;
 }
 .download-button {
   background-color: #00cc00;
@@ -449,6 +479,7 @@ dialog.closing {
   border: var(--borders);
 }
 .switch-container {
+  margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -458,14 +489,9 @@ dialog.closing {
 .switch-btn {
   position: relative;
   display: inline-block;
+  margin: 0;
   width: 60px;
   height: 34px;
-}
-.switch-btn:hover {
-  filter: brightness(125%);
-}
-.switch-btn:active {
-  filter: brightness(100%);
 }
 .switch-btn input {
   opacity: 0;
@@ -477,9 +503,15 @@ dialog.closing {
   cursor: pointer;
   top: 0; left: 0; right: 0; bottom: 0;
   border: var(--borders);
-  background-color: var(--active-color);
+  background-color: var(--bg-color-teritary);
   transition: 0.2s;
   border-radius: 34px;
+}
+.slider:hover {
+  background-color: var(--hover-color);
+}
+.slider:active {
+  background-color: var(--active-color);
 }
 .slider::before {
   position: absolute;
