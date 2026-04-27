@@ -16,6 +16,26 @@ const dialog = document.querySelectorAll('dialog');
 const showModal = document.querySelectorAll('.showModal');
 const closeModal = document.querySelectorAll('.closeModal');
 
+dialog.forEach(dialog => {
+  dialog.addEventListener('click', (e) => {
+    const rect = dialog.getBoundingClientRect();
+
+    const isInDialog =
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom;
+
+    if (!isInDialog) {
+      dialog.classList.add('closing');
+      setTimeout(() => {
+        dialog.close();
+        dialog.classList.remove('closing');
+      }, 200)
+    }
+  })
+})
+
 showModal.forEach(btn => {
   btn.addEventListener('click', () => {
     const id = btn.dataset.dialog;
